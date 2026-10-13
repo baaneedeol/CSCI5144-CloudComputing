@@ -2,12 +2,9 @@ Run the project
 
 Assign 1 Directory 
 
-First Terminal: 
 1. Activate virtual environment: source .venv/bin/activate
 2. Install dependencies: pip install -r requirements.txt
 3. Start the server: python3 server.py
-
-Second Terminal:
 4. Open second terminal
 5. Activate virtual environment: source .venv/bin/activate
 6. Test a PUT: curl -i -X PUT http://127.0.0.1:8080/student \
