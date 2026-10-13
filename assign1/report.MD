@@ -10,3 +10,6 @@ For persistence, the server write the current dictionary to a JSON file after su
 ### Challenges and Testing 
 
 ### Assumptions and Future Improvements 
+
+
+https://dev.to/devasservice/python-key-value-store-tutorial-build-encrypt-and-optimize-your-data-storage-62f
