@@ -72,15 +72,15 @@ Expected response: 400 Bad Request
 Server saves successful PUT and DELETE operations to data.json
 
 To verify persistence: 
-    1. Start the server
-    2. Store a value: 
-        `curl -X PUT http://127.0.0.1:8080/persistent \
-        -H "Content-Type: application/json" \
-        -d '{"value":"survives restart"}'`
-    3. Stop the server using Ctrl+C.
-    4. Restart it: `python3 server.py`
-    5. Retrieve the saved value: 
-        `curl http://127.0.0.1:8080/persistent`
+1. Start the server
+2. Store a value: 
+  `curl -X PUT http://127.0.0.1:8080/persistent \
+  -H "Content-Type: application/json" \
+  -d '{"value":"survives restart"}'`
+3. Stop the server using Ctrl+C.
+4. Restart it: `python3 server.py`
+5. Retrieve the saved value: 
+  `curl http://127.0.0.1:8080/persistent`
 Server should return the previously store value. 
 
 #### Run the Concurrency Test
