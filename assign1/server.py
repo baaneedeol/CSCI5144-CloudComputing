@@ -86,6 +86,7 @@ def get_value(key):
 
 
 # Create or update a value
+@app.route("/<key>", methods=["PUT"])
 def put_value(key):
     if not request.is_json:
         logger.warning("PUT key=%s -> Invalid content type", key)
@@ -169,7 +170,9 @@ def delete_value(key):
             temp_file = DATA_FILE + ".tmp"
 
             with open(temp_file, "w", encoding="utf-8") as file:
-                json.dump(store, file, indent=4)
+                json.dump(store, file, indent=4, allow_nan=False)
+                file.flush()
+                os.fsync(file.fileno())
 
             os.replace(temp_file, DATA_FILE)
 

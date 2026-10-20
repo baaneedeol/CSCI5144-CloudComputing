@@ -23,7 +23,7 @@ start_event = threading.Event()
 def kv_store_operation(op_type, key, value=None):
     try:
         if op_type == 'set':
-            response = requests.post(f"{BASE_URL}/{key}", json={'value': value})
+            response = requests.put(f"{BASE_URL}/{key}", json={'value': value})
         elif op_type == 'get':
             response = requests.get(f"{BASE_URL}/{key}")
         else:
