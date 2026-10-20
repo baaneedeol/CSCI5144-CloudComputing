@@ -7,8 +7,8 @@ assign1/
 ├── benchmark.py
 ├── requirements.txt
 ├── concurrency_test.py
-├── data.json
-└── kvstore.log
+├── README.md
+└── report.MD
 
 data.json and kvstore.log are generated automatically when needed. 
 
@@ -38,6 +38,11 @@ Open a second terminal for client requests and benchmarking and following steps 
 `curl -i -X PUT http://127.0.0.1:8080/name \
   -H "Content-Type: application/json" \
   -d '{"value":"John"}'`
+
+### Create a Key with POST
+curl -i -X POST http://127.0.0.1:8080/posttest \
+  -H "Content-Type: application/json" \
+  -d '{"value":"POST works"}'
 
 #### Retrieve a Value with GET
 `curl -i http://127.0.0.1:8080/name`

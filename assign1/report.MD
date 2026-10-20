@@ -14,7 +14,9 @@ An important implementation challenge was maintaining consistency when multiple 
 
 Request validation was another consideration. The server checks that POST and PUT requests contain JSON data with a `value` field and rejects values that cannot be serialized as valid JSON. It also returns appropriate HTTP status codes for invalid requests, missing keys, and persistence errors. Functional testing covered GET, PUT, POST, and DELETE operations, updating existing values, invalid requests, missing keys, and persistence across server restarts. Concurrent requests were also tested.
 
-The updated benchmark used three concurrent client threads to write 300 keys and read them back, checking that each retrieved value matched the value originally stored. The test completed **600 successful operations with zero errors and zero mismatches**. The write phase achieved a throughput of **716.0 operations per second**, with an average latency of **4.18 ms** and a p99 latency of **22.34 ms**. The read phase achieved a throughput of **1,026.8 operations per second**, with an average latency of **2.91 ms** and a p99 latency of **14.87 ms**. The complete benchmark took **0.71 seconds**, achieving an overall throughput of **843.7 operations per second**. These results demonstrate correct storage and retrieval under the tested concurrent workload. Timestamped logs also recorded successful operations and handled errors.
+The benchmark used three concurrent client threads to write 300 keys and read them back, verifying that each retrieved value matched the value originally stored. The test completed **600 successful operations with zero errors and zero mismatches**. The write phase achieved a throughput of **615.4 operations per second**, with an average latency of **4.86 ms** and a p99 latency of **15.46 ms**. The read phase achieved a throughput of **1,551.4 operations per second**, with an average latency of **1.93 ms** and a p99 latency of **3.49 ms**. The complete benchmark took **0.68 seconds**, achieving an overall throughput of **881.2 operations per second**. These results demonstrate correct storage and retrieval under the tested concurrent workload.
+
+**Note:** The benchmark results are from a single run on a Linux machine. Performance measurements may vary across different runs and hardware configurations.
 
 ### Assumptions and Future Improvements
 
@@ -23,5 +25,3 @@ The implementation assumes a single server process running locally at `127.0.0.1
 Potential improvements include optimizing disk persistence to reduce lock contention, supporting larger datasets through a dedicated storage engine, and adding configurable concurrency and workload settings. Benchmarking could be extended to compare performance across different thread counts and operation mixes. Further improvements could include automated tests for concurrent reads, writes, and deletes, stronger crash-recovery guarantees, request-size limits, and authentication if the service were exposed beyond the local machine.
 
 Overall, the project demonstrates the core design of a concurrent key-value service while addressing data consistency, persistence, input validation, logging, and performance testing.
-
-**Note:** The benchmark results are from a single run on a Linux machine. Performance measurements may vary across different runs and hardware configurations.
