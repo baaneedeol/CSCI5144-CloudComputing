@@ -79,14 +79,11 @@ def get_value(key):
 
     logger.info("GET key=%s -> SUCCESS", key)
 
-    return jsonify({
-        "key": key,
-        "value": value
-    }), 200
+    return jsonify({"value": value}), 200
 
 
 # Create or update a value
-@app.route("/<key>", methods=["PUT"])
+@app.route("/<key>", methods=["PUT", "POST"])
 def put_value(key):
     if not request.is_json:
         logger.warning("PUT key=%s -> Invalid content type", key)
@@ -170,6 +167,9 @@ def delete_value(key):
             temp_file = DATA_FILE + ".tmp"
 
             with open(temp_file, "w", encoding="utf-8") as file:
+                json.dump(store, file, indent=4, allow_nan=False)
+                file.flush()
+                os.fsync(file.fileno())
                 json.dump(store, file, indent=4, allow_nan=False)
                 file.flush()
                 os.fsync(file.fileno())
