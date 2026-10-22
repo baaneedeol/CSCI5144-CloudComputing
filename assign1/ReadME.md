@@ -6,7 +6,6 @@ assign1/
 ├── server.py
 ├── benchmark.py
 ├── requirements.txt
-├── concurrency_test.py
 ├── README.md
 └── report.MD
 
@@ -40,9 +39,9 @@ Open a second terminal for client requests and benchmarking and following steps 
   -d '{"value":"John"}'`
 
 ### Create a Key with POST
-curl -i -X POST http://127.0.0.1:8080/posttest \
+`curl -i -X POST http://127.0.0.1:8080/posttest \
   -H "Content-Type: application/json" \
-  -d '{"value":"POST works"}'
+  -d '{"value":"POST works"}'`
 
 #### Retrieve a Value with GET
 `curl -i http://127.0.0.1:8080/name`
@@ -60,16 +59,16 @@ curl -i -X POST http://127.0.0.1:8080/posttest \
 
 #### Test Invalid PUT Requests 
 
-Missing the required value field:
+Missing the required value field:\
 `curl -i -X PUT http://127.0.0.1:8080/test \
     -H "Content-Type: application/json" \
-    -d '{}'`
+    -d '{}'`\
 Expected response: 400 Bad Request
 
-Using an invalid content type: 
+Using an invalid content type:\
 `curl -i -X PUT http://127.0.0.1:8080/test \
   -H "Content-Type: text/plain" \
-  -d 'hello'`
+  -d 'hello'`\
 Expected response: 400 Bad Request
 
 
@@ -89,7 +88,7 @@ To verify persistence:
 Server should return the previously store value. 
 
 #### Run the Performance Benchmark
-Ensure the server is running before starting the benchmark. 
+Ensure the server is running before starting the benchmark.\
 `python3 benchmark.py`
 
 #### Logging 
