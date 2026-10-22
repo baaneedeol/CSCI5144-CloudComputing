@@ -170,9 +170,6 @@ def delete_value(key):
                 json.dump(store, file, indent=4, allow_nan=False)
                 file.flush()
                 os.fsync(file.fileno())
-                json.dump(store, file, indent=4, allow_nan=False)
-                file.flush()
-                os.fsync(file.fileno())
 
             os.replace(temp_file, DATA_FILE)
 
