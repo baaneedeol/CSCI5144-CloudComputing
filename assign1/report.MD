@@ -26,6 +26,8 @@ The benchmark used three concurrent client threads to write 300 keys and read th
 | CPU / RAM | 4 vCPUs, Intel Xeon @ 2.10 GHz / 15 GB |
 | Software | Python 3.13, Flask 3.1 |
 
+![Figure 1](throughput_latency_saturation.png)
+*Figure 1. Throughput (left axis) and average/p99 latency (right axis) vs. number of client threads; mean of three runs.*
 
 ### Assumptions and Future Improvements
 
