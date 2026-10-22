@@ -18,6 +18,15 @@ The benchmark used three concurrent client threads to write 300 keys and read th
 
 **Note:** The benchmark results are from a single run on a Linux machine. Performance measurements may vary across different runs and hardware configurations.
 
+**Scaling with thread count.** We repeated the benchmark (300 keys per phase) with **1, 2, 3, 5, and 10** client threads, three runs each, with **zero errors and zero mismatches**. Throughput levels off at about **three threads** (writes ≈ **456 ops/s**, reads ≈ **721 ops/s**); beyond that, more threads only raise latency. Writes stay slower than reads because each write rewrites and fsyncs the data file under the global lock. Absolute numbers differ from the single run above because this sweep used a different machine:
+
+| Test machine (figure) | |
+|---|---|
+| OS | Ubuntu 24.04 (Linux VM) |
+| CPU / RAM | 4 vCPUs, Intel Xeon @ 2.10 GHz / 15 GB |
+| Software | Python 3.13, Flask 3.1 |
+
+
 ### Assumptions and Future Improvements
 
 The implementation assumes a single server process running locally at `127.0.0.1:8080`. The store is expected to contain JSON-compatible values, and the JSON file is assumed to be accessible and writable. A missing data file indicates that the server should start with an empty store, whereas an unreadable or invalid existing file prevents startup to avoid silently discarding saved data. The application is intended for a small-scale assignment rather than a production environment.
