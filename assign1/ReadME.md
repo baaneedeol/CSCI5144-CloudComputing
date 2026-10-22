@@ -6,7 +6,7 @@ assign1/
 ├── server.py
 ├── benchmark.py
 ├── requirements.txt
-├── README.md
+├── ReadME.md
 └── report.MD
 
 data.json and kvstore.log are generated automatically when needed. 

@@ -2,6 +2,8 @@
 
 ## Single-Server Key-Value Store
 
+**Team members:** Shuyuan Yang, Sitong Pan, Baanee Singh, Shaan Sidhu
+
 ### Design Decisions
 
 We implemented a key-value store using Python and Flask because they provide a lightweight way to build an HTTP server with minimal dependencies. The server runs on port 8080 and supports GET, PUT, POST, and DELETE requests. Values are stored in a Python dictionary, and a thread lock protects access to shared data. Flask's threaded mode allows the server to handle multiple client requests concurrently.
