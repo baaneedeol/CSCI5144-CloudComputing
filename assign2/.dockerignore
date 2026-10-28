@@ -1,0 +1,7 @@
+# Keep local runtime files and caches out of the image
+data/
+data.json
+*.log
+__pycache__/
+.venv/
+.DS_Store
