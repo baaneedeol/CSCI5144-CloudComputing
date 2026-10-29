@@ -5,7 +5,7 @@ The Flask key-value store from Assignment 1, packaged as a Docker image.
 ## Files
 
 ```
-hw2/
+assign2/
 ├── Dockerfile          # Recipe for building the image
 ├── .dockerignore       # Files that must not be copied into the image
 ├── requirements.txt    # Python dependencies (Flask)
@@ -31,7 +31,7 @@ container can reach it. Run locally (without Docker) it still defaults to
 ## Build the image
 
 ```bash
-cd hw2
+cd assign2
 docker build -t kvstore .
 ```
 
