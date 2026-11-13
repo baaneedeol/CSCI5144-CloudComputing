@@ -1,0 +1,47 @@
+
+services:
+
+  coordinator:
+    build: .
+    container_name: kv-coordinator
+    command: python coordinator.py
+    ports:
+      - "8080:8080"
+    environment:
+      KV_NODES: ${KV_NODES:-http://kv1:8080}
+    depends_on:
+      - kv1
+      - kv2
+      - kv3
+
+  kv1:
+    build: .
+    container_name: kv-store-1
+    command: python server.py
+    ports:
+      - "8081:8080"
+    volumes:
+      - kv1_data:/app/data
+
+  kv2:
+    build: .
+    container_name: kv-store-2
+    command: python server.py
+    ports:
+      - "8082:8080"
+    volumes:
+      - kv2_data:/app/data
+
+  kv3:
+    build: .
+    container_name: kv-store-3
+    command: python server.py
+    ports:
+      - "8083:8080"
+    volumes:
+      - kv3_data:/app/data
+
+volumes:
+  kv1_data:
+  kv2_data:
+  kv3_data:
